@@ -56,7 +56,7 @@ export default function TravelGuides() {
           </div>
         ))}
 
-        {/* Last big banner */}
+
         <div className="tg-banner">
           <img src="/assets/g-banner.png" className="tg-banner-img" />
           <div className="tg-banner-text">

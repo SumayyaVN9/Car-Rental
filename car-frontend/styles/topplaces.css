@@ -1,0 +1,72 @@
+.tp-section {
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.tp-title {
+  font-family: "Lexend Deca", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 30px;
+}
+
+/* GRID */
+.tp-grid {
+  width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(4, 240px); /* each card fixed width */
+  gap: 24px;
+}
+
+/* CARD */
+.tp-card {
+  width: 240px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding-bottom: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  text-align: center;
+}
+
+.tp-card:hover {
+  transform: translateY(-4px);
+}
+
+/* IMAGE — EXACT SIZE */
+.tp-img {
+  width: 215px;
+  height: 223px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin: 12px auto 0; /* center image */
+  display: block;      /* needed to center with margin auto */
+}
+
+/* NAME */
+.tp-name {
+  font-family: "Lexend Deca";
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
+  color: #000;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .tp-grid {
+    grid-template-columns: repeat(2, 240px);
+  }
+}
+
+@media (max-width: 600px) {
+  .tp-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+}

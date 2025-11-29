@@ -2,6 +2,9 @@ import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import BrandsStrip  from "@/components/BrandsStrip";
 import TravelGuides from "@/components/TravelGuides";
+import TopPlaces from "@/components/TopPlaces";
+import AppPromo from "@/components/AppPromo";
+import Footer from "@/components/Footer";
 import "@/styles/home.css";
 
 export default function Home() {
@@ -12,7 +15,11 @@ export default function Home() {
       <HeroSection />
       </div>
       <BrandsStrip />
+      <TopPlaces />
+      <AppPromo />
       <TravelGuides />
+      <Footer />
+      
     </div>
   );
 }
