@@ -1,0 +1,31 @@
+.brands-section{
+    width: 116%;
+    background-color: #ffffff;
+    margin-left: -105px;
+    height: 135px;
+}
+
+.brands-strip {
+  width: 100%;
+  max-width: 1000px;
+  height: 23px;
+  /* margin: 40px auto 20px auto; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 2%;
+  opacity: 0.7; 
+  margin-left: 178px;
+  margin-top: 56px;
+  /* background-color:yellowgreen; */
+}
+
+
+
+.brands-strip img {
+  max-height: 50px;   
+  height: 50px;       
+  object-fit: contain;
+  margin-top: 5%;
+}
