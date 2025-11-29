@@ -1,0 +1,71 @@
+.header {
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.header-nav {
+  border: 1px solid #333;
+  padding: 6px 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.logo-img {
+  width: 40px;
+}
+
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  font-family: "Lexend Deca", sans-serif;
+  color: #333;
+  line-height: 1.1;
+  gap: 4px;
+}
+.logo-line1 {
+  font-size: 18px;
+  font-weight: 600;   
+}
+
+.logo-line2 {
+  font-size: 18px;
+  font-weight: 400;  
+}
+
+
+
+.bold {
+  font-weight: 600;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon {
+  width: 25px;
+}
+
+.lang {
+  font-size: 14px;
+  font-weight: 600;
+  color: black;
+}
+.logo-img {
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+}

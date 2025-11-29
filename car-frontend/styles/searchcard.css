@@ -1,0 +1,114 @@
+.search-card {
+  /* width: 450px; */
+  width: auto;
+  background: #FFFFFF;
+  padding: 8%;
+  /* padding: 30px; */
+  border-radius: 16px;
+  box-shadow: 0px 5px 30px rgba(0,0,0,0.15);
+}
+input:focus {
+  outline: none !important;
+}
+
+.search-card h1 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.search-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #ddd;
+  padding: 14px;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.input-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.search-input input {
+  width: 94%;
+  border-radius: 8px;
+  border: transparent;
+}
+
+
+.add-dropoff {
+  
+  color: #3bad7b;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.date-row {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.date-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;   
+}
+
+.date-box input {
+  padding: 12px 12px 12px 45px;   
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #333;
+  cursor: pointer;
+}
+.date-box label {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #555;
+}
+
+.alert-check {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px; color: #12b36e;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+
+.search-btn {
+  width: 100%;
+  padding: 14px;
+  background: #058f63;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.search-card {
+  position: relative;
+}
+
+.calendar-popup {
+  position: absolute;
+  top: -150px;      
+  left: 50px;       
+  background: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+

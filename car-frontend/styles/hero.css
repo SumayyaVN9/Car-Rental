@@ -1,0 +1,23 @@
+.hero-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px;
+  position: relative;
+}
+
+.hero-left {
+  width: 50%;
+  /* background-color: blue; */
+}
+
+.hero-right {
+  width: 50%;
+  display: flex;
+  /* background-color: aqua; */
+
+  justify-content: center;
+}
+
+.phone-img {
+  width: 350px;
+}
