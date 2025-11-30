@@ -110,8 +110,7 @@ export default function SearchCard() {
     setOpenDropdown(false);
   };
 
-  /* ---------- RENDER ---------- */
-
+ 
   return (
     <div className="search-card">
       <h1>
@@ -120,7 +119,6 @@ export default function SearchCard() {
         No delays
       </h1>
 
-      {/* PICKUP FIELD */}
       <div className="search-input">
         <img src="/assets/map.png" className="input-icon" alt="map" />
         <input

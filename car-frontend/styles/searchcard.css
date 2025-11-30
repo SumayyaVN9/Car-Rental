@@ -279,29 +279,26 @@
 
 
 @media (max-width: 600px) {
-
-  /* Hide the image completely */
-  .hero-right,
   .hero-right-img {
     display: none !important;
   }
-
-  /* Center the hero layout */
   .hero-section {
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 10px;
   }
 
-  /* Correct mobile card size */
+  .hero-right-img {
+    width: 100%;
+  }
   .search-card {
-    width: 230%;             /* full width */
-    max-width: 380px;        /* ideal on phone */
-    padding: 20px;           /* normal padding */
-    margin: 0 auto;          /* center it */
-    transform: none !important;  /* remove shift */
-    border-radius: 20px;
+    padding: 24px;
+    width: 200%;
+  }
+   .search-card {
+    padding: 24px;
+    width: 250%;    
+    max-width: 500px;
+    margin: 0 auto;
+    transform: translateX(-15%);  
   }
 
   .search-card h1 {
@@ -310,8 +307,10 @@
   }
 
   .search-input {
-    width: 100%;
     padding: 12px;
+    gap: 8px;
+    flex-direction: row;
+    width: 100%;
   }
 
   .search-input input {
@@ -319,18 +318,58 @@
     padding-left: 35px !important;
   }
 
+  .location-dropdown {
+    width: 100%;
+    left: 0;
+  }
+
+  .add-dropoff-wrapper {
+    margin-left: 0;
+    gap: 4px;
+  }
+
+  .add-dropoff {
+    margin-left: 0;
+    font-size: 13px;
+  }
+
+  .vertical-line {
+    margin-left: 18px;
+  }
+
   .date-row {
     flex-direction: column;
     gap: 14px;
-    margin: 12px 0;
+    margin: 10px 0;
   }
 
   .date-box {
-    width: 100%;
     margin-top: 0;
+    width: 100%;
+  }
+
+  .date-box input {
+    padding: 12px 12px 12px 38px;
+  }
+
+  .alert-check {
+    margin-left: 0;
+    font-size: 13px;
+  }
+
+  .search-btn {
+    font-size: 15px;
+    padding: 14px;
+    width: 100%;
+  }
+
+  .calendar-popup {
+    top: auto;
+    bottom: -260px;
+    left: 0;
+    width: 100%;
   }
 }
-
 
 @media (max-width: 380px) {
   .search-card h1 {
