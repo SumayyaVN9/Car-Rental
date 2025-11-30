@@ -1,4 +1,3 @@
-
 .results-page {
   margin: 0 auto;
   padding: 3% 7%;
@@ -8,16 +7,19 @@
 .results-header {
   margin-bottom: 25px;
 }
-.results-content {
-  min-height: auto !important;
+.results-layout {
+  min-height: unset !important;
   height: auto !important;
-  padding-bottom: 0 !important;
 }
 
-.results-layout {
+.results-content {
+  min-height: 0 !important;
   height: auto !important;
-  min-height: auto !important;
+  background: transparent !important;
+  padding-bottom: 0 !important;
+  color: #000;
 }
+
 
 .back-btn {
   

@@ -161,7 +161,7 @@ export default function ResultContent() {
         <section className="results-content">
           {loading && <div>Loading cars…</div>}
           {error && <div className="error">{error}</div>}
-          {!loading && !error && cars.length === 0 && <div>No cars found.</div>}
+          {!loading && !error && cars.length === 0 && <div> No cars found.</div>}
 
           <div className="cars-grid">
             {cars.map((car) => (
