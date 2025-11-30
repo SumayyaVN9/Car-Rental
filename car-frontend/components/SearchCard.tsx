@@ -1,133 +1,11 @@
-// "use client";
-
-// import "@/styles/searchcard.css";
-// import { useState, useRef, useEffect } from "react";
-// import { DateRange } from "react-date-range";
-// import "react-date-range/dist/styles.css";
-// import "react-date-range/dist/theme/default.css";
-
-// type DateRangeItem = {
-//   selection: {
-//     startDate: Date;
-//     endDate: Date;
-//     key: string;
-//   };
-// };
-
-// export default function SearchCard() {
-//   const [openCal, setOpenCal] = useState(false);
-
-//   const [range, setRange] = useState([
-//     {
-//       startDate: new Date(),
-//       endDate: new Date(),
-//       key: "selection",
-//     },
-//   ]);
-
-//   const [hasSelected, setHasSelected] = useState(false);   //contol placeholder
-
-//   const popupRef = useRef<HTMLDivElement>(null);
-
-//   useEffect(() => {
-//     function handleClickOutside(event: MouseEvent) {
-//       if (popupRef.current && !popupRef.current.contains(event.target as Node)) {
-//         setOpenCal(false);
-//       }
-//     }
-
-//     document.addEventListener("mousedown", handleClickOutside);
-//     return () => document.removeEventListener("mousedown", handleClickOutside);
-//   }, []);
-
-//   return (
-//     <div className="search-card">
-//       <h1>
-//         Quick car hire,<br />No delays
-//       </h1>
-
-//       <div className="search-input">
-//         <img src="/assets/map.png" className="input-icon" alt="map" />
-//         <input type="text" placeholder="Enter pick up location" />
-//       </div>
-
-//       <div className="add-dropoff-wrapper">
-//         <span className="vertical-line"></span>
-
-//         <div className="add-dropoff">
-//           <img src="/assets/add.png" className="add-icon" alt="add" />
-//           Add Different Drop Off
-//         </div>
-//       </div>
-//       <div className="date-row" onClick={() => setOpenCal(true)}>
-//         <div className="date-box">
-//           <img src="/assets/calendar.png" className="input-icon" alt="calendar" />
-//           <input
-//             type="text"
-//             placeholder="Pickup"
-//             value={
-//               hasSelected ? range[0].startDate.toDateString() : ""
-//             }
-//             readOnly
-//           />
-//         </div>
-
-//         <div className="date-box">
-//           <img src="/assets/calendar.png" className="input-icon" alt="calendar" />
-//           <input
-//             type="text"
-//             placeholder="Return"
-//             value={
-//               hasSelected ? range[0].endDate.toDateString() : ""
-//             }
-//             readOnly
-//           />
-//         </div>
-//       </div>
-
-//       {openCal && (
-//         <div className="calendar-popup" ref={popupRef}>
-//           <DateRange
-//             ranges={range}
-//             onChange={(item: DateRangeItem) => {
-//               const { startDate, endDate } = item.selection;
-
-//               setRange([item.selection]);
-
-//               if (startDate && endDate && startDate !== endDate) {
-//                 setHasSelected(true);  //display date instead place holder
-//                 setOpenCal(false);
-//               }
-//             }}
-//             moveRangeOnFirstSelection={false}
-//             months={2}
-//             direction="horizontal"
-//           />
-//         </div>
-//       )}
-
-//       <label className="alert-check">
-//         <input type="checkbox" /> Alert me when price drops
-//       </label>
-
-//       <button className="search-btn">Search</button>
-//     </div>
-//   );
-// }
-
-
-
 "use client";
 
 import "@/styles/searchcard.css";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 
-// --------------------
-// TYPES
-// --------------------
 type DateRangeItem = {
   selection: {
     startDate: Date;
@@ -141,117 +19,161 @@ type LocationItem = {
   city: string;
   country: string;
   code: string;
+  address: string;
+  lat: number | null;
+  lng: number | null;
 };
 
-const LOCATIONS: LocationItem[] = [
-  { name: "Heathrow Airport", city: "London", country: "United Kingdom", code: "LHR" },
-  { name: "Gatwick Airport", city: "London", country: "United Kingdom", code: "LGW" },
-  { name: "Manchester Airport", city: "Manchester", country: "UK", code: "MAN" },
-  { name: "Dubai Airport", city: "Dubai", country: "UAE", code: "DXB" },
-];
+type ActiveField = "pickup" | "dropoff" | null;
 
 export default function SearchCard() {
-
+  /* ---------- DATE ---------- */
   const [openCal, setOpenCal] = useState(false);
   const [range, setRange] = useState([
-    {
-      startDate: new Date(),
-      endDate: new Date(),
-      key: "selection",
-    },
+    { startDate: new Date(), endDate: new Date(), key: "selection" },
   ]);
-  const [hasSelected, setHasSelected] = useState(false);  //contol placeholder
+  const [hasSelected, setHasSelected] = useState(false);
 
-  const popupRef = useRef<HTMLDivElement>(null);
+  /* ---------- LOCATION STATE ---------- */
+  const [pickupQuery, setPickupQuery] = useState("");
+  const [dropoffQuery, setDropoffQuery] = useState("");
 
-  
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (popupRef.current && !popupRef.current.contains(event.target as Node)) {
-        setOpenCal(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  // Location Search States
-
-  const [query, setQuery] = useState("");
   const [results, setResults] = useState<LocationItem[]>([]);
-  const [openLoc, setOpenLoc] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(false);
+  const [activeField, setActiveField] = useState<ActiveField>(null);
 
-  const locRef = useRef<HTMLDivElement>(null);
+  const [showDropoff, setShowDropoff] = useState(false);
 
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (locRef.current && !locRef.current.contains(event.target as Node)) {
-        setOpenLoc(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  /* ---------- HELPERS ---------- */
 
-  // Handle typing in location box
-  const handleLocationChange = (value: string) => {
-    setQuery(value);
+  const formatLocationDisplay = (loc: LocationItem) => {
+    // What appears inside the input after you click an item
+    if (loc.name && loc.city) return `${loc.name}, ${loc.city}`;
+    if (loc.name) return loc.name;
+    if (loc.city) return `${loc.city}, ${loc.country}`;
+    return loc.address;
+  };
 
-    if (value.trim() === "") {
+  const fetchLocations = async (value: string) => {
+    if (!value.trim()) {
       setResults([]);
-      setOpenLoc(false);
+      setOpenDropdown(false);
       return;
     }
 
-    const filtered = LOCATIONS.filter((loc) =>
-      loc.name.toLowerCase().includes(value.toLowerCase()) ||
-      loc.city.toLowerCase().includes(value.toLowerCase()) ||
-      loc.code.toLowerCase().includes(value.toLowerCase())
-    );
-
-    setResults(filtered);
-    setOpenLoc(true);
+    try {
+      const res = await fetch(
+        `http://127.0.0.1:8000/locations?search=${encodeURIComponent(value)}`
+      );
+      const data = (await res.json()) as LocationItem[];
+      setResults(data);
+      setOpenDropdown(data.length > 0);
+    } catch (err) {
+      console.error("Failed to fetch locations:", err);
+      setResults([]);
+      setOpenDropdown(false);
+    }
   };
 
-  // Select a location
+  /* ---------- INPUT HANDLERS ---------- */
+
+  const handlePickupChange = (value: string) => {
+    setPickupQuery(value);
+    setActiveField("pickup");
+    fetchLocations(value);
+  };
+
+  const handleDropoffChange = (value: string) => {
+    setDropoffQuery(value);
+    setActiveField("dropoff");
+    fetchLocations(value);
+  };
+
+  /* ---------- SINGLE SELECT LOCATION ---------- */
+
   const selectLocation = (loc: LocationItem) => {
-    setQuery(`${loc.name}, ${loc.city}`);
-    setOpenLoc(false);
+    const displayValue = formatLocationDisplay(loc);
+
+    if (activeField === "pickup") {
+      setPickupQuery(displayValue);
+    } else if (activeField === "dropoff") {
+      setDropoffQuery(displayValue);
+    }
+
+    setOpenDropdown(false);
   };
+
+  /* ---------- RENDER ---------- */
 
   return (
     <div className="search-card">
       <h1>
-        Quick car hire,<br />No delays
+        Quick car hire,
+        <br />
+        No delays
       </h1>
 
-      {
-      /* LOCATION AUTOCOMPLETE*/}
-
-      <div className="search-input" ref={locRef}>
+      {/* PICKUP FIELD */}
+      <div className="search-input">
         <img src="/assets/map.png" className="input-icon" alt="map" />
-
         <input
           type="text"
           placeholder="Enter pick up location"
-          value={query}
-          onChange={(e) => handleLocationChange(e.target.value)}
-          onClick={() => setOpenLoc(true)}
+          value={pickupQuery}
+          onChange={(e) => handlePickupChange(e.target.value)}
+          onFocus={() => {
+            setActiveField("pickup");
+            if (results.length > 0) setOpenDropdown(true);
+          }}
         />
-
-        {/* <img src="/assets/arrow-down.png" className="dropdown-icon" /> */}
       </div>
 
-      {/* DROPDOWN */}
-      {openLoc && results.length > 0 && (
+      {/* DROP-OFF FIELD */}
+      {showDropoff && (
+        <div className="search-input">
+          <img src="/assets/map.png" className="input-icon" alt="map" />
+          <input
+            type="text"
+            placeholder="Enter drop off location"
+            value={dropoffQuery}
+            onChange={(e) => handleDropoffChange(e.target.value)}
+            onFocus={() => {
+              setActiveField("dropoff");
+              if (results.length > 0) setOpenDropdown(true);
+            }}
+          />
+        </div>
+      )}
+
+      {/* ADD DROP-OFF (only when dropoff not shown) */}
+      {!showDropoff && (
+        <div className="add-dropoff-wrapper">
+          <span className="vertical-line"></span>
+          <div className="add-dropoff" onClick={() => setShowDropoff(true)}>
+            <img src="/assets/add.png" className="add-icon" alt="add" />
+            Add Different Drop Off
+          </div>
+        </div>
+      )}
+
+      {/* LOCATION DROPDOWN (shared) */}
+      {openDropdown && results.length > 0 && (
         <div className="location-dropdown">
           {results.map((loc, i) => (
-            <div key={i} className="location-item" onClick={() => selectLocation(loc)}>
+            <div
+              key={i}
+              className="location-item"
+              onMouseDown={() => selectLocation(loc)} // mousedown so it fires before blur
+            >
               <div className="left-side">
                 <img src="/assets/plane.png" className="loc-icon" />
                 <div className="loc-info">
-                  <p className="loc-name">{loc.name}</p>
-                  <p className="loc-sub">{loc.city}, {loc.country}</p>
+                  <p className="loc-name">{loc.name || loc.address}</p>
+                  <p className="loc-sub">
+                    {loc.city}
+                    {loc.city && loc.country && ", "}
+                    {loc.country}
+                  </p>
                 </div>
               </div>
               <div className="loc-code">{loc.code}</div>
@@ -259,16 +181,6 @@ export default function SearchCard() {
           ))}
         </div>
       )}
-
-      {/* ADD DROPOFF */}
-      <div className="add-dropoff-wrapper">
-        <span className="vertical-line"></span>
-
-        <div className="add-dropoff">
-          <img src="/assets/add.png" className="add-icon" alt="add" />
-          Add Different Drop Off
-        </div>
-      </div>
 
       {/* DATE ROW */}
       <div className="date-row" onClick={() => setOpenCal(true)}>
@@ -295,16 +207,14 @@ export default function SearchCard() {
 
       {/* CALENDAR POPUP */}
       {openCal && (
-        <div className="calendar-popup" ref={popupRef}>
+        <div className="calendar-popup">
           <DateRange
             ranges={range}
             onChange={(item: DateRangeItem) => {
               const { startDate, endDate } = item.selection;
-
               setRange([item.selection]);
-
               if (startDate && endDate && startDate !== endDate) {
-                setHasSelected(true); //display date instead place holder
+                setHasSelected(true);
                 setOpenCal(false);
               }
             }}
@@ -315,7 +225,7 @@ export default function SearchCard() {
         </div>
       )}
 
-      {/* CHECKBOX */}
+      {/* ALERT CHECKBOX */}
       <label className="alert-check">
         <input type="checkbox" /> Alert me when price drops
       </label>

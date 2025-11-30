@@ -1,4 +1,3 @@
- /* MAIN CARD */
 .search-card {
   width: auto;
   background: #ffffff;
@@ -9,7 +8,7 @@
   overflow: visible;
 }
 
-/* TITLE */
+
 .search-card h1 {
   font-family: "Lexend Deca", sans-serif;
   font-size: 42px;
@@ -29,6 +28,8 @@
   padding: 14px;
   border-radius: 8px;
   background: #fff;
+  margin-top: 4%;
+  /* position: relative;  */
 }
 
 .input-icon {
@@ -50,11 +51,14 @@
   font-family: "Lexend Deca", sans-serif;
   font-weight: 400;
   font-size: 14px;
+  padding-left: 40px !important;  
   line-height: 20px;
   letter-spacing: -0.004em;
   outline: none;
-  color: #555;
+  color: #555 !important;
 }
+
+
 
 .add-dropoff-wrapper {
   display: flex;
@@ -104,6 +108,7 @@
 .date-box {
   flex: 1;
   position: relative;
+  margin-top: 3%;
 }
 
 .date-box input {
@@ -184,7 +189,7 @@
 
 
 
-.location-dropdown {
+/* .location-dropdown {
   position: absolute;
   background: #fff;
   width: 84%;
@@ -193,7 +198,33 @@
   margin-top: 5px;
   padding: 10px 0;
   z-index: 100;
+} */
+
+.location-dropdown {
+  position: absolute;
+  background: #fff;
+  width: 84%;
+  max-height: 230px;        
+  overflow-y: auto;        
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  margin-top: 5px;
+  padding: 10px 0;
+  z-index: 100;
 }
+.location-dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+
+.location-dropdown::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+.location-dropdown::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 
 .location-item {
   display: flex;
