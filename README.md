@@ -31,3 +31,9 @@ Frontend calls → backend API
 Backend fetches data → returns JSON
 
 You display cars on your website
+
+
+
+venv\Scripts\activate
+
+uvicorn main:app --reload
