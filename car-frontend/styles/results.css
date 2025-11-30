@@ -8,6 +8,16 @@
 .results-header {
   margin-bottom: 25px;
 }
+.results-content {
+  min-height: auto !important;
+  height: auto !important;
+  padding-bottom: 0 !important;
+}
+
+.results-layout {
+  height: auto !important;
+  min-height: auto !important;
+}
 
 .back-btn {
   
