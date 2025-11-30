@@ -75,41 +75,39 @@
     font-size: 34px;
   }
 }
-
 @media (max-width: 768px) {
   .app-promo {
     flex-direction: column;
     text-align: center;
-    padding: 50px 24px;
 
-    background-size: 480px auto;
-    background-position: center top -40px;
+    padding: 40px 20px 40px;        /* ↓ reduces height */
+    background-size: 320px auto;    /* ↓ smaller image */
+    background-position: center 0;  /* ↓ move image to top */
   }
 
   .promo-content {
+    margin-top: 160px;              /* ↓ reduce space below image */
     width: 100%;
-    margin-top: 230px;     
-    text-align: center;
   }
 
   .promo-title {
-    font-size: 30px;
-  }
-
-  .promo-text {
-    font-size: 16px;
-    line-height: 26px;
+    font-size: 28px;
   }
 }
 
 @media (max-width: 480px) {
   .app-promo {
-    background-size: 360px auto;
-    padding: 40px 20px;
+    padding: 30px 16px 36px;        /* ↓ reduces more */
+    background-size: 260px auto;
+    background-position: center 10px;
+  }
+
+  .promo-content {
+    margin-top: 140px;              /* ↓ smaller spacing */
   }
 
   .promo-title {
-    font-size: 26px;
+    font-size: 24px;
   }
 
   .promo-btn {

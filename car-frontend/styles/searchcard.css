@@ -253,6 +253,11 @@
 }
 
 @media (max-width: 900px) {
+   .hero-section {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
   .search-card {
     padding: 6%;
   }
@@ -265,12 +270,23 @@
   .date-row {
     gap: 8px;
   }
+  .hero-right-img {
+    width: 90%;
+    margin-top: 20px;
+  }
 }
 
 @media (max-width: 600px) {
+  .hero-section {
+    padding: 10px;
+  }
+
+  .hero-right-img {
+    width: 100%;
+  }
   .search-card {
     padding: 24px;
-    width: 100%;
+    width: 200%;
   }
 
   .search-card h1 {
