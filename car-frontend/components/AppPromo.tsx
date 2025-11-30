@@ -5,11 +5,6 @@ import "@/styles/appPromo.css";
 export default function AppPromo() {
   return (
     <section className="app-promo">
-
-
-      <div className="promo-phone-bg"></div>
-
-
       <div className="promo-content">
         <h2 className="promo-title">Get the app now</h2>
 

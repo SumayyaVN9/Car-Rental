@@ -1,6 +1,6 @@
 .tp-section {
   width: 100%;
-  padding: 20px 0;
+  padding: 40px 0;
   text-align: center;
 }
 
@@ -9,46 +9,48 @@
   font-size: 32px;
   font-weight: 700;
   color: #000;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
 }
 
-/* GRID */
+
 .tp-grid {
-  width: 1280px;
+  width: 100%;
+  max-width: 1280px;     
   margin: 0 auto;
+  
   display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(4, 240px); /* each card fixed width */
-  gap: 24px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+
+  padding: 0 20px;   
 }
 
-/* CARD */
 .tp-card {
-  width: 240px;
+  width: 100%;
+  max-width: 240px;      
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  padding-bottom: 12px;
+  padding-bottom: 14px;
   cursor: pointer;
   transition: transform 0.2s ease;
   text-align: center;
+  margin: 0 auto;     
 }
 
 .tp-card:hover {
   transform: translateY(-4px);
 }
 
-/* IMAGE — EXACT SIZE */
 .tp-img {
   width: 215px;
   height: 223px;
   object-fit: cover;
   border-radius: 14px;
-  margin: 12px auto 0; /* center image */
-  display: block;      /* needed to center with margin auto */
+  margin: 12px auto 0;
+  display: block;
 }
 
-/* NAME */
 .tp-name {
   font-family: "Lexend Deca";
   font-size: 16px;
@@ -57,10 +59,21 @@
   color: #000;
 }
 
-/* RESPONSIVE */
 @media (max-width: 1024px) {
   .tp-grid {
-    grid-template-columns: repeat(2, 240px);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tp-title {
+    font-size: 28px;
+  }
+
+  .tp-img {
+    width: 200px;
+    height: 210px;
   }
 }
 
@@ -68,5 +81,26 @@
   .tp-grid {
     grid-template-columns: 1fr;
     justify-items: center;
+    gap: 22px;
+  }
+
+  .tp-card {
+    max-width: 260px;
+  }
+
+  .tp-img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 380px) {
+  .tp-title {
+    font-size: 26px;
+  }
+
+  .tp-img {
+    width: 180px;
+    height: 180px;
   }
 }

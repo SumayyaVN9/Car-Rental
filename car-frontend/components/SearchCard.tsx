@@ -5,6 +5,7 @@ import { useState } from "react";
 import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
+import { useRouter } from "next/navigation";
 
 type DateRangeItem = {
   selection: {
@@ -34,7 +35,7 @@ export default function SearchCard() {
   ]);
   const [hasSelected, setHasSelected] = useState(false);
 
-  /* ---------- LOCATION STATE ---------- */
+  /* ---------- LOCATION ---------- */
   const [pickupQuery, setPickupQuery] = useState("");
   const [dropoffQuery, setDropoffQuery] = useState("");
 
@@ -44,10 +45,11 @@ export default function SearchCard() {
 
   const [showDropoff, setShowDropoff] = useState(false);
 
+  const router = useRouter();
+
   /* ---------- HELPERS ---------- */
 
   const formatLocationDisplay = (loc: LocationItem) => {
-    // What appears inside the input after you click an item
     if (loc.name && loc.city) return `${loc.name}, ${loc.city}`;
     if (loc.name) return loc.name;
     if (loc.city) return `${loc.city}, ${loc.country}`;
@@ -75,6 +77,16 @@ export default function SearchCard() {
     }
   };
 
+  /* ---------- FIXED SEARCH FUNCTION ---------- */
+  const handleSearch = () => {
+    const pickup = encodeURIComponent(pickupQuery.trim());
+    const from = range[0].startDate.toISOString().split("T")[0];
+    const to = range[0].endDate.toISOString().split("T")[0];
+
+    router.push(`/result?pickup=${pickup}&from=${from}&to=${to}`);
+
+  };
+
   /* ---------- INPUT HANDLERS ---------- */
 
   const handlePickupChange = (value: string) => {
@@ -89,16 +101,11 @@ export default function SearchCard() {
     fetchLocations(value);
   };
 
-  /* ---------- SINGLE SELECT LOCATION ---------- */
-
   const selectLocation = (loc: LocationItem) => {
     const displayValue = formatLocationDisplay(loc);
 
-    if (activeField === "pickup") {
-      setPickupQuery(displayValue);
-    } else if (activeField === "dropoff") {
-      setDropoffQuery(displayValue);
-    }
+    if (activeField === "pickup") setPickupQuery(displayValue);
+    if (activeField === "dropoff") setDropoffQuery(displayValue);
 
     setOpenDropdown(false);
   };
@@ -145,7 +152,7 @@ export default function SearchCard() {
         </div>
       )}
 
-      {/* ADD DROP-OFF (only when dropoff not shown) */}
+      {/* ADD DROP-OFF */}
       {!showDropoff && (
         <div className="add-dropoff-wrapper">
           <span className="vertical-line"></span>
@@ -156,14 +163,14 @@ export default function SearchCard() {
         </div>
       )}
 
-      {/* LOCATION DROPDOWN (shared) */}
+      {/* DROPDOWN */}
       {openDropdown && results.length > 0 && (
         <div className="location-dropdown">
           {results.map((loc, i) => (
             <div
               key={i}
               className="location-item"
-              onMouseDown={() => selectLocation(loc)} // mousedown so it fires before blur
+              onMouseDown={() => selectLocation(loc)}
             >
               <div className="left-side">
                 <img src="/assets/plane.png" className="loc-icon" />
@@ -182,7 +189,7 @@ export default function SearchCard() {
         </div>
       )}
 
-      {/* DATE ROW */}
+      {/* DATE PICKERS */}
       <div className="date-row" onClick={() => setOpenCal(true)}>
         <div className="date-box">
           <img src="/assets/calendar.png" className="input-icon" alt="calendar" />
@@ -205,7 +212,6 @@ export default function SearchCard() {
         </div>
       </div>
 
-      {/* CALENDAR POPUP */}
       {openCal && (
         <div className="calendar-popup">
           <DateRange
@@ -231,7 +237,9 @@ export default function SearchCard() {
       </label>
 
       {/* SEARCH BUTTON */}
-      <button className="search-btn">Search</button>
+      <button className="search-btn" onClick={handleSearch}>
+        Search
+      </button>
     </div>
   );
 }

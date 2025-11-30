@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className="footer-section">
 
-      {/* --- NEWSLETTER BAR --- */}
+      {/* NEWSLETTER */}
       <div className="newsletter">
         <div className="news-left">
           <h3>Be the first one to know when the price drops</h3>
@@ -14,35 +14,34 @@ export default function Footer() {
         </div>
 
         <div className="news-right">
-          <input
-            type="email"
-            placeholder="Enter your mail"
-            className="news-input"
-          />
+          <input type="email" placeholder="Enter your mail" className="news-input" />
           <button className="news-btn">Join</button>
         </div>
       </div>
 
-
-      {/* --- FOOTER MAIN --- */}
+      {/* MAIN FOOTER */}
       <div className="footer-main">
 
-        {/* LEFT BRAND AREA */}
-        <div className="brand-box">
-          <img src="/assets/logo.png" className="brand-icon" />
-          <div className="brand-text">
-            <strong>Airport</strong>
-            <span>Rental Cars</span>
+        {/* Logo */}
+        <div className="brand-left">
+          <div className="brand-box">
+            <img src="/assets/logo.png" className="logo-img" />
+            <div className="logo-text">
+              <span className="line1">Airport</span>
+              <span className="line2">Rental Cars</span>
+            </div>
           </div>
+
+          <select className="currency-select">
+            <option>USD</option>
+            <option>EUR</option>
+            <option>INR</option>
+          </select>
         </div>
 
-        <select className="currency-select">
-          <option>USD</option>
-          <option>EUR</option>
-          <option>INR</option>
-        </select>
 
-        {/* NAV LINKS */}
+
+        {/* Links */}
         <div className="footer-links">
           <a>Privacy policy</a>
           <a>Terms & conditions</a>
@@ -51,17 +50,18 @@ export default function Footer() {
           <a>Contact</a>
         </div>
 
-        {/* SOCIAL ICONS */}
+        {/* Social */}
         <div className="footer-social">
-          <img src="/assets/facebook.png" />
-          <img src="/assets/twitter.png" />
-          <img src="/assets/instagram.png" />
+          <img src="/assets/facebook.png" alt="" />
+          <img src="/assets/twitter.png" alt="" />
+          <img src="/assets/instagram.png" alt="" />
         </div>
       </div>
 
-      <p className="copyright">
-        © Copyright 2025 - Airport rental car
-      </p>
+      {/* COPYRIGHT */}
+      {/* <div className="footer-bottom">
+        <p>© Copyright 2025 - Airport rental car</p>
+      </div> */}
 
     </footer>
   );

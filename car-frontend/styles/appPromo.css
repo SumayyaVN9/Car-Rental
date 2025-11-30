@@ -1,60 +1,129 @@
 .app-promo {
-  position: relative;
+ position: relative;
   width: 1280px;
   margin: 60px auto;
-  background: #e0f3ec;
+
+ 
+  background-color: #e9f6ef;
+
+  background-image: url("/assets/phone-bg.png");
+  background-repeat: no-repeat;
+  background-size: 1200px auto;    
+  background-position: 30px center; 
+
   border-radius: 20px;
   padding: 60px;
   overflow: hidden;
+
   display: flex;
   align-items: center;
   justify-content: flex-end;
 }
 
 
-.promo-phone-bg {
-  position: absolute;
-  left: -100px;          
-  bottom: -20px;        
-  width: 600px;
-  height: 600px;
-  background-image: url("/assets/phone-bg.png"); 
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  transform: rotate(-6deg);
-  opacity: 1;
-  z-index: 1;
-}
-
 .promo-content {
   position: relative;
-  z-index: 2; 
-  text-align: left;
   width: 45%;
+  text-align: left;
 }
 
 .promo-title {
   font-family: "Lexend Deca";
-  font-size: 32px;
+  font-size: 40px;
   font-weight: 700;
-  margin-bottom: 15px;
+  color: #0f1b15;
+  margin-bottom: 18px;
 }
 
 .promo-text {
   font-family: "Lexend Deca";
-  font-size: 16px;
-  color: #555;
-  line-height: 26px;
-  margin-bottom: 30px;
+  font-size: 18px;
+  line-height: 30px;
+  color: #3b4c44;
+  margin-bottom: 32px;
 }
 
 .promo-btn {
-  padding: 14px 32px;
-  font-size: 16px;
+  padding: 16px 38px;
+  font-size: 18px;
+  font-weight: 600;
   background: #32a676;
   color: white;
   border: none;
   border-radius: 12px;
   cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.promo-btn:hover {
+  background: #279a68;
+}
+
+@media (max-width: 1024px) {
+  .app-promo {
+    width: 90%;
+    padding: 60px 40px;
+    background-size: 600px auto;
+    background-position: -100px center;
+  }
+
+  .promo-content {
+    width: 55%;
+  }
+
+  .promo-title {
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-promo {
+    flex-direction: column;
+    text-align: center;
+    padding: 50px 24px;
+
+    background-size: 480px auto;
+    background-position: center top -40px;
+  }
+
+  .promo-content {
+    width: 100%;
+    margin-top: 230px;     
+    text-align: center;
+  }
+
+  .promo-title {
+    font-size: 30px;
+  }
+
+  .promo-text {
+    font-size: 16px;
+    line-height: 26px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-promo {
+    background-size: 360px auto;
+    padding: 40px 20px;
+  }
+
+  .promo-title {
+    font-size: 26px;
+  }
+
+  .promo-btn {
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 380px) {
+  .promo-title {
+    font-size: 24px;
+  }
+
+  .promo-text {
+    font-size: 15px;
+  }
 }
