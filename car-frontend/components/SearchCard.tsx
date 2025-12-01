@@ -65,7 +65,8 @@ export default function SearchCard() {
 
     try {
       const res = await fetch(
-        `http://127.0.0.1:8000/locations?search=${encodeURIComponent(value)}`
+        // `http://127.0.0.1:8000/locations?search=${encodeURIComponent(value)}`
+        `https://car-rental-pfwk.onrender.com/locations?search=${encodeURIComponent(value )}`
       );
       const data = (await res.json()) as LocationItem[];
       setResults(data);

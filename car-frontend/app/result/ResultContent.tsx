@@ -59,7 +59,8 @@ export default function ResultContent() {
     params.append("page", page.toString());
     params.append("page_size", PAGE_SIZE.toString());
 
-    return `http://127.0.0.1:8000/cars?${params.toString()}`;
+    // return `http://127.0.0.1:8000/cars?${params.toString()}`;
+     return `https://car-rental-pfwk.onrender.com/cars?${params.toString()}`;
   };
 
   useEffect(() => {
