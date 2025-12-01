@@ -567,7 +567,7 @@
     grid-template-columns: 1fr;
     gap: 22px;
     margin-left: 10%;
-    width: 300px;
+    /* width: 200px; */
     margin-top: 10%;
 
   }
