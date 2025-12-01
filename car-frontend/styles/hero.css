@@ -29,18 +29,19 @@
 
   .hero-left {
     width: 100%;
-    flex: 2;             
+    flex: 1.6;        /* Bigger left */
   }
 
   .hero-right {
     width: 100%;
-    flex: 1;              
+    flex: 1;          /* Smaller right */
     display: flex;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 15px;
   }
 
   .phone-img {
-    width: 200px;        
+    width: 200px;      /* Adjust smaller size */
   }
 }
+
