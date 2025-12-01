@@ -526,7 +526,7 @@
 @media (max-width: 600px) {
   
   .results-page {
-    padding: 18px;
+    padding: 10%;
   }
 
   .results-header h1 {
@@ -567,7 +567,7 @@
     grid-template-columns: 1fr;
     gap: 22px;
     margin-left: 10%;
-    width: 350px;
+    width: 300px;
     margin-top: 10%;
 
   }
