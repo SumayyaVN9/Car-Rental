@@ -28,16 +28,16 @@ def get_cars(
 ):
     query = db.query(Car)
 
-    # Filter by pickup address
+    
     if pickup:
         pickup_clean = pickup.replace("Airport", "").strip()
         query = query.filter(Car.pickup_address.ilike(f"%{pickup_clean}%"))
 
-    # Car type filter
+    
     if car_type and car_type.lower() != "all":
         query = query.filter(Car.category.ilike(f"%{car_type}%"))
 
-    # Price filter
+    
     if min_price is not None:
         query = query.filter(Car.price >= min_price)
 
@@ -46,7 +46,7 @@ def get_cars(
 
     total = query.count()
 
-    # Pagination
+   
     cars = query.offset((page - 1) * page_size).limit(page_size).all()
 
     results = [

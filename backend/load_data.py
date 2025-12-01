@@ -6,10 +6,9 @@ from database import engine, SessionLocal
 DATA_PATH = Path(__file__).resolve().parent.parent / "data" / "car-results.json"
 
 def insert_data():
-    # Create table
     Base.metadata.create_all(bind=engine)
 
-    # Read JSON
+   
     with open(DATA_PATH, "r", encoding="utf-8") as f:
         data = json.load(f)
 
