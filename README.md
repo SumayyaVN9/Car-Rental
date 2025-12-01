@@ -22,7 +22,7 @@ load_data.py
 
 Only inserts JSON into DB.
 
-main.py (VERY IMPORTANT)
+main.py (VERY IMPORTANT)..
 
 This is where your backend runs, like:
 
