@@ -96,34 +96,17 @@
     height: 20px;
   }
 }
-/* @media (max-width: 600px) {
-  .header {
-    flex-direction: row;    
-    align-items: center;
-    justify-content: space-between; 
-  }
 
-  .header-left {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .header-right {
-    display: flex;
-    align-items: center;
-  }
-} */
 @media (max-width: 600px) {
   .header {
     padding: 16px 14px;
-    flex-wrap: nowrap;      /* IMPORTANT */
+    flex-wrap: nowrap;     
     gap: 10px;
   }
 
   .logo-line1,
   .logo-line2 {
-    font-size: 14px;        /* Reduce width on mobile */
+    font-size: 14px;        
   }
 
   .header-right {
@@ -131,7 +114,7 @@
   }
 
   .header-nav {
-    padding: 4px 8px;       /* smaller language button */
+    padding: 4px 8px;       
   }
 
   .icon {

@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className="footer-section">
 
-      {/* NEWSLETTER */}
+     
       <div className="newsletter">
         <div className="news-left">
           <h3>Be the first one to know when the price drops</h3>
@@ -19,10 +19,10 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* MAIN FOOTER */}
+      
       <div className="footer-main">
 
-        {/* Logo */}
+        
         <div className="brand-left">
           <div className="brand-box">
             <img src="/assets/logo.png" className="logo-img" />
@@ -41,7 +41,7 @@ export default function Footer() {
 
 
 
-        {/* Links */}
+        
         <div className="footer-links">
           <a>Privacy policy</a>
           <a>Terms & conditions</a>
@@ -50,7 +50,7 @@ export default function Footer() {
           <a>Contact</a>
         </div>
 
-        {/* Social */}
+       
         <div className="footer-social">
           <img src="/assets/facebook.png" alt="" />
           <img src="/assets/twitter.png" alt="" />
