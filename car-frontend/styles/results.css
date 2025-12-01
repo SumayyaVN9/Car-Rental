@@ -566,8 +566,7 @@
   .cars-grid {
     grid-template-columns: 1fr;
     gap: 22px;
-    margin-left: 10%;
-    /* width: 200px; */
+    padding: 5%;
     margin-top: 10%;
 
   }
