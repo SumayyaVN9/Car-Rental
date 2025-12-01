@@ -276,29 +276,48 @@
   }
 }
 
+@media (max-width: 768px) {
+  .hero-container {
+    flex-direction: column;
+    padding: 20px;
+  }
 
+  .hero-left {
+    width: 100%;
+    flex: 2;   /* LEFT takes more space */
+  }
+
+  .hero-right {
+    width: 100%;
+    flex: 1;   /* RIGHT takes less space */
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .phone-img {
+    width: 200px;
+  }
+}
 
 @media (max-width: 600px) {
-  .hero-right-img {
+
+  /* Hide Right Image */
+  .hero-right {
     display: none !important;
   }
+
   .hero-section {
-    padding: 9px;
+    padding: 12px;
   }
 
-  .hero-right-img {
-    width: 100%;
-  }
+  /* SEARCH CARD FIXED */
   .search-card {
     padding: 24px;
-    width: 200%;
-  }
-   .search-card {
-    padding: 24px;
-    width: 250%;    
+    width: 100%;
     max-width: 500px;
-    margin: 0 auto;
-    transform: translateX(-15%);  
+    margin: 0 auto;   /* Centered */
+    /* transform removed */
   }
 
   .search-card h1 {
@@ -306,10 +325,10 @@
     line-height: 34px;
   }
 
+  /* INPUT FIELD */
   .search-input {
     padding: 12px;
     gap: 8px;
-    flex-direction: row;
     width: 100%;
   }
 
@@ -318,11 +337,13 @@
     padding-left: 35px !important;
   }
 
+  /* LOCATION DROPDOWN */
   .location-dropdown {
     width: 100%;
     left: 0;
   }
 
+  /* ADD DROPOFF */
   .add-dropoff-wrapper {
     margin-left: 0;
     gap: 4px;
@@ -337,6 +358,7 @@
     margin-left: 18px;
   }
 
+  /* DATE ROW */
   .date-row {
     flex-direction: column;
     gap: 14px;
@@ -352,17 +374,20 @@
     padding: 12px 12px 12px 38px;
   }
 
+  /* CHECKBOX */
   .alert-check {
     margin-left: 0;
     font-size: 13px;
   }
 
+  /* BUTTON */
   .search-btn {
     font-size: 15px;
     padding: 14px;
     width: 100%;
   }
 
+  /* CALENDAR */
   .calendar-popup {
     top: auto;
     bottom: -260px;

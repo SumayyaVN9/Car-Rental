@@ -251,10 +251,9 @@
 } */
 
 
-/* ===============================
-   BASE LAYOUT
-================================= */
-
+/* ===========================
+   MAIN RESULTS PAGE
+=========================== */
 .results-page {
   margin: 0 auto;
   padding: 3% 7%;
@@ -280,10 +279,9 @@
   color: #000;
 }
 
-/* ===============================
-   BUTTONS + TEXT
-================================= */
-
+/* ===========================
+   BACK BUTTON
+=========================== */
 .back-btn {
   border: 1px solid #45b68d;
   padding: 10px 20px;
@@ -302,6 +300,9 @@
   color: white;
 }
 
+/* ===========================
+   TITLES
+=========================== */
 .results-header h1 {
   font-family: "Lexend Deca", sans-serif;
   font-size: 42px;
@@ -318,10 +319,9 @@
   font-size: 14px;
 }
 
-/* ===============================
-   FILTERS
-================================= */
-
+/* ===========================
+   FILTER SECTION
+=========================== */
 .filters {
   display: flex;
   align-items: center;
@@ -341,6 +341,7 @@
   flex-direction: row;
   align-items: center;
   gap: 14px;
+  flex-wrap: wrap;
 }
 
 .filter-row label {
@@ -356,7 +357,7 @@
   border-radius: 10px;
   font-size: 14px;
   min-width: 100px;
-  color: #b0b6c2;
+  color: #51545b;
   background: #f9fafb;
 }
 
@@ -364,7 +365,6 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #51545b;
 }
 
 .clear-btn {
@@ -375,7 +375,7 @@
   border: none;
   cursor: pointer;
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 600;
   white-space: nowrap;
   transition: 0.2s ease;
 }
@@ -384,10 +384,9 @@
   background: #e11d48;
 }
 
-/* ===============================
-   CARS GRID
-================================= */
-
+/* ===========================
+   CAR GRID & CAR CARD
+=========================== */
 .cars-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
@@ -400,6 +399,7 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
   overflow: hidden;
   transition: 0.2s ease;
+
   display: flex;
   flex-direction: column;
 }
@@ -472,10 +472,9 @@
   opacity: 0.9;
 }
 
-/* ===============================
+/* ===========================
    PAGINATION
-================================= */
-
+=========================== */
 .pagination {
   display: flex;
   justify-content: center;
@@ -488,16 +487,11 @@
   padding: 10px 20px;
   border-radius: 10px;
   cursor: pointer;
-  margin-bottom: 20px;
   font-family: "Lexend Deca", sans-serif;
   font-size: 15px;
   font-weight: 700;
   color: #45b68d;
   transition: 0.2s ease;
-}
-
-.pagination button:hover:not(:disabled) {
-  background: #f3f4f6;
 }
 
 .pagination span {
@@ -506,6 +500,13 @@
   color: #62666c;
 }
 
+.pagination button:hover:not(:disabled) {
+  background: #f3f4f6;
+}
+
+/* ===========================
+   INFO BANNER
+=========================== */
 .info-banner {
   background: #e0f2fe;
   color: #0369a1;
@@ -519,13 +520,13 @@
   color: #b91c1c;
 }
 
-/* ================================================
-   📱 MOBILE RESPONSIVE (0px–600px)
-================================================ */
-
+/* ===========================
+   MOBILE RESPONSIVE FIXED
+=========================== */
 @media (max-width: 600px) {
+  
   .results-page {
-    padding: 20px;
+    padding: 18px;
   }
 
   .results-header h1 {
@@ -547,8 +548,8 @@
 
   .filter-row select,
   .price-inputs input {
-    min-width: 100px;
     width: 100%;
+    min-width: unset;
   }
 
   .price-inputs {
@@ -565,6 +566,10 @@
   .cars-grid {
     grid-template-columns: 1fr;
     gap: 22px;
+    margin-left: 10%;
+    width: 350px;
+    margin-top: 10%;
+
   }
 
   .car-card {
