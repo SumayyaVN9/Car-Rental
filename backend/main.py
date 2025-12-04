@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
+from sqlalchemy import func
 from database import get_db
 from models import Car
 
@@ -13,12 +14,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 @app.get("/cars")
 def get_cars(
     pickup: str = None,
-    from_date: str = None,
-    to_date: str = None,
+    fuel: str = None,
+    seats: str = None,
     car_type: str = None,
     min_price: float = None,
     max_price: float = None,
@@ -28,40 +28,55 @@ def get_cars(
 ):
     query = db.query(Car)
 
-    
     if pickup:
-        pickup_clean = pickup.replace("Airport", "").strip()
-        query = query.filter(Car.pickup_address.ilike(f"%{pickup_clean}%"))
+        clean = pickup.replace("Airport", "").strip()
+        query = query.filter(Car.pickup_address.ilike(f"%{clean}%"))
 
-    
-    if car_type and car_type.lower() != "all":
+
+    if fuel and fuel != "all":
+        query = query.filter(func.lower(Car.fuel).like(f"%{fuel.lower()}%"))
+
+
+    seat_map = {
+        "2": ["Compact"], 
+        "4": ["Compact", "Special"],
+        "5": ["Intermediate", "Standard Elite", "Special"],
+        "7": ["SUV", "Passenger Van"],
+    }
+
+    if seats and seats != "all":
+        allowed_categories = seat_map.get(seats, [])
+        query = query.filter(Car.category.in_(allowed_categories))
+
+
+    if car_type and car_type != "all":
         query = query.filter(Car.category.ilike(f"%{car_type}%"))
 
-    
+
     if min_price is not None:
         query = query.filter(Car.price >= min_price)
-
     if max_price is not None:
         query = query.filter(Car.price <= max_price)
 
     total = query.count()
-
-   
     cars = query.offset((page - 1) * page_size).limit(page_size).all()
-
-    results = [
-        {
+    results = []
+    for c in cars:
+        results.append({
             "id": c.id,
             "name": c.name,
             "brand": c.provider_name,
             "car_type": c.category,
+            "type": c.type,
             "fuel": c.fuel,
+            "transmission": c.transmission,
+            "air_conditioning": c.air_conditioning,
+            "seats": seats,
             "price_per_day": c.price,
             "image_url": c.image,
             "pickup_address": c.pickup_address
-        }
-        for c in cars
-    ]
+        })
+
 
     return {
         "items": results,
@@ -69,47 +84,24 @@ def get_cars(
         "page": page,
         "page_size": page_size,
     }
+@app.get("/cars/{car_id}")
+def get_car_by_id(car_id: int, db: Session = Depends(get_db)):
+    car = db.query(Car).filter(Car.id == car_id).first()
 
-@app.get("/locations")
-def get_locations(search: str, db: Session = Depends(get_db)):
+    if not car:
+        return {"detail": "Not Found"}
 
-    results = (
-        db.query(
-            Car.pickup_address,
-            Car.pickup_lat,
-            Car.pickup_lng
-        )
-        .filter(Car.pickup_address.ilike(f"%{search}%"))
-        .distinct()
-        .limit(10)
-        .all()
-    )
-
-    formatted = []
-
-    for r in results:
-        address = r.pickup_address
-        if not address:
-            continue
-
-        parts = [p.strip() for p in address.split(",")]
-
-        city = parts[-2] if len(parts) >= 2 else ""
-        country = parts[-1] if len(parts) >= 1 else ""
-
-        name = f"{city} Airport" if city else address
-        code = (city[:3].upper() if city else "LOC")
-
-        formatted.append({
-            "name": name,
-            "city": city,
-            "country": country,
-            "code": code,
-            "address": address,
-            "lat": r.pickup_lat,
-            "lng": r.pickup_lng
-        })
-
-    return formatted
-
+    return {
+        "id": car.id,
+        "name": car.name,
+        "brand": car.provider_name,
+        "car_type": car.category,
+        "type": car.type,
+        "fuel": car.fuel,
+        "transmission": car.transmission,
+        "air_conditioning": car.air_conditioning,
+        "price_per_day": car.price,
+        "image_url": car.image,
+        "pickup_address": car.pickup_address
+    }
 
