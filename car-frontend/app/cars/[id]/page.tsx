@@ -1,20 +1,31 @@
+
 "use client";
 
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import "@/styles/details.css";
 
 export default function CarDetails() {
   const { id } = useParams();
+  const router = useRouter();
+
   const [car, setCar] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
+
+  const [showPopup, setShowPopup] = useState(false);
+
   useEffect(() => {
     async function fetchCar() {
-      const res = await fetch(`https://car-rental-pfwk.onrender.com/cars/${id}`);
-      const data = await res.json();
-      setCar(data);
-      setLoading(false);
+      try {
+        const res = await fetch(`https://car-rental-pfwk.onrender.com/cars/${id}`);
+        const data = await res.json();
+        setCar(data);
+      } catch (err) {
+        console.error("Error fetching car:", err);
+      } finally {
+        setLoading(false);
+      }
     }
     fetchCar();
   }, [id]);
@@ -24,16 +35,24 @@ export default function CarDetails() {
 
   return (
     <div className="details-container">
-      
-   
+
+
+      <button className="back-btn" onClick={() => router.push("/result")}>
+    ← Back
+  </button>
+
+
+  
       <div className="details-image-box">
         <img src={car.image_url} alt={car.name} className="details-image" />
       </div>
 
-     
+ 
       <div className="details-info">
         <h1 className="details-title">{car.name}</h1>
-        <p className="details-sub">{car.brand} • {car.car_type?.toUpperCase()}</p>
+        <p className="details-sub">
+          {car.brand} • {car.car_type?.toUpperCase()}
+        </p>
 
         <div className="details-grid">
 
@@ -49,7 +68,7 @@ export default function CarDetails() {
 
           <div className="details-item">
             <span className="item-label">Transmission</span>
-            <span className="item-value">Automatic</span>
+            <span className="item-value">{car.transmission || "Automatic"}</span>
           </div>
 
           <div className="details-item">
@@ -70,11 +89,27 @@ export default function CarDetails() {
             <span className="per-day">/day</span>
           </div>
 
-          <button className="book-btn">
+          <button className="book-btn" onClick={() => setShowPopup(true)}>
             Book Now
           </button>
         </div>
       </div>
+
+
+      {showPopup && (
+        <div className="popup-overlay" onClick={() => setShowPopup(false)}>
+          <div className="popup-box" onClick={(e) => e.stopPropagation()}>
+            <h2>🎉 Booking Confirmed!</h2>
+            <p>Your {car.name} has been successfully booked.</p>
+            <button
+              className="close-popup"
+              onClick={() => setShowPopup(false)}
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      )}
 
     </div>
   );
