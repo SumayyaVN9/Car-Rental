@@ -243,7 +243,11 @@
   font-size: 12px;
   color: gray;
 }
-
+ .error-msg {
+  color: red;
+  margin-top: 8px;
+  font-size: 14px;
+}
 .loc-code {
   font-family: "Lexend Deca";
   font-size: 16px;
@@ -397,6 +401,8 @@
   .date-box input {
     font-size: 13px;
   }
+ 
+
 
   .search-btn {
     font-size: 14px;

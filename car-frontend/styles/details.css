@@ -1,0 +1,112 @@
+.details-container {
+  display: flex;
+  gap: 40px;
+  padding: 40px 60px;
+  align-items: flex-start;
+  font-family: "Inter", sans-serif;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+.details-image-box {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.details-image {
+  width: 100%;
+  max-width: 520px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.details-info {
+  flex: 1;
+}
+
+.details-title {
+  font-size: 38px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.details-sub {
+  color: #555;
+  margin-bottom: 24px;
+  font-size: 18px;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.details-item {
+  background: #f9f9f9;
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: 1px solid #e5e5e5;
+}
+
+.item-label {
+  font-size: 14px;
+  color: #666;
+}
+
+.item-value {
+  font-size: 17px;
+  font-weight: 600;
+  display: block;
+  margin-top: 4px;
+}
+
+.details-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.price-box {
+  display: flex;
+  align-items: baseline;
+}
+
+.price {
+  font-size: 40px;
+  font-weight: 700;
+  color: #1e9c6b;
+}
+
+.per-day {
+  margin-left: 8px;
+  color: #777;
+  font-size: 18px;
+}
+
+.book-btn {
+  background: #00a86b;
+  padding: 15px 35px;
+  border: none;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.book-btn:hover {
+  background: #008f5b;
+}
+
+.loading, .error {
+  text-align: center;
+  padding: 60px;
+  font-size: 20px;
+}
