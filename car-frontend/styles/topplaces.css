@@ -14,42 +14,42 @@
 
 
 .tp-grid {
-  width: 100%;
-  max-width: 1280px;     
+  width: 80%;
+  max-width: 1280px;
   margin: 0 auto;
-  
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 28px;
-
-  padding: 0 20px;   
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 15px; 
+  justify-items: center;
 }
+
 
 .tp-card {
-  width: 100%;
-  max-width: 240px;      
+  width: 240px;             
   background: #fff;
   border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
   padding-bottom: 14px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
   text-align: center;
-  margin: 0 auto;     
+  transition: 0.2s ease;
 }
+
 
 .tp-card:hover {
   transform: translateY(-4px);
 }
+
 
 .tp-img {
   width: 215px;
   height: 223px;
   object-fit: cover;
   border-radius: 14px;
-  margin: 12px auto 0;
+  margin: 10px auto 0;
   display: block;
 }
+
+
 
 .tp-name {
   font-family: "Lexend Deca";
@@ -85,12 +85,11 @@
   }
 
   .tp-card {
-    /* max-width: 260px; */
     width: 100%;
   }
 
   .tp-img {
-    width: 200px;
+    width: 300px;
     height: 200px;
   }
 }

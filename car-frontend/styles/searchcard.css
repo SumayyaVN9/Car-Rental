@@ -398,21 +398,19 @@
     padding: 14px;
     width: 100%;
   }
-/* Shrink entire calendar */
 .rdrCalendarWrapper {
-  transform: scale(0.8);          /* Reduce size to 80% */
+  transform: scale(0.8);          
   transform-origin: top center;   
-  margin-left: -60px;
-  margin-top: 25%;
+  margin-left: -40px;
+  margin-top: 20%;
 }
 
 
 .rdrCalendarWrapper,
 .rdrDateRangeWrapper {
-  width: 480px !important;      
+  width: 430px !important;      
 }
 
-/* Reduce day cell height */
 .rdrDay {
   height: 38px !important;
 }
