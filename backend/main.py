@@ -105,3 +105,6 @@ def get_car_by_id(car_id: int, db: Session = Depends(get_db)):
         "pickup_address": car.pickup_address
     }
 
+@app.get("/ping")
+def ping():
+    return {"status": "alive"}

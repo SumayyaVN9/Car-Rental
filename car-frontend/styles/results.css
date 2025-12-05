@@ -409,6 +409,8 @@
   flex: 1;
   min-width: 0; 
   padding: 10px 14px;
+  margin-left: -5%;
+  padding: 5%;
 }
 
 
@@ -456,6 +458,7 @@
     align-items: stretch;
     gap: 16px;
     padding: 20px;
+    width: 105%;
   }
 
   .filter-row {
