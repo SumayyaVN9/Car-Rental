@@ -39,7 +39,7 @@ export default function CarDetails() {
 
       <button className="back-btn" onClick={() => router.push("/result")}>
     ← Back
-  </button>
+       </button>
 
 
   

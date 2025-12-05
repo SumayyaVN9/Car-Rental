@@ -292,7 +292,8 @@
   .details-container {
     grid-template-columns: 1fr;
     gap: 40px;
-    padding: 80px 20px 30px;
+    padding: 8%;
+    /* padding: 80px 20px 30px; */
   }
 
   .back-btn {
@@ -327,17 +328,17 @@
 @media (max-width: 640px) {
   .details-container {
     /* padding: 70px 16px 20px; */
-    padding: 10%;
+    padding: 14%;
     margin-top: 5%;
   }
 
   .back-btn {
     top: 15px;
-    left: 15px;
-    padding: 8px 16px;
-    padding: 10%;
+    left: 25px;
+    padding: 6px 16px;
+    margin-top: -1%;
     font-size: 14px;
-    margin-left: 10%;
+    margin-left: 6%;
   }
 
   .details-image-box {
