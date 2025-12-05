@@ -61,10 +61,10 @@ export default function CarDetails() {
             <span className="item-value">{car.fuel}</span>
           </div>
 
-          <div className="details-item">
+          {/* <div className="details-item">
             <span className="item-label">Seats</span>
             <span className="item-value">{car.seats}</span>
-          </div>
+          </div> */}
 
           <div className="details-item">
             <span className="item-label">Transmission</span>
